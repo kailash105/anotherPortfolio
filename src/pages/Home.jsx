@@ -4,11 +4,8 @@ import FeaturedProjects from "../components/FeaturedProjects";
 
 export default function Home() {
   return (
-    <main className="bg-[#0d0d0d] text-white min-h-screen">
-      {/* Hero Section */}
+    <main className="text-white">
       <Hero />
-
-      {/* Featured Projects */}
       <FeaturedProjects />
     </main>
   );

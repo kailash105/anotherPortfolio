@@ -3,13 +3,14 @@
 @tailwind utilities;
 
 /* ============================= */
-/* 🌑 Global Styles */
+/* 🌎 Global Styles */
 /* ============================= */
 
 body {
   @apply bg-[#0d0d0d] text-white antialiased;
 }
 
+/* Prevent image dragging and smooth transitions globally */
 img {
   @apply select-none;
 }
@@ -19,24 +20,24 @@ a {
 }
 
 /* ============================= */
-/* 🎬 Background Animations */
+/* 🎬 Background Animations (Hero Section) */
 /* ============================= */
 
-/* ⚡️ Super Fast Falling Dots */
-@keyframes bgFall {
+/* Slow downward motion for hero dots */
+@keyframes bgFallSlower {
   0% {
     background-position: 0 0;
   }
   100% {
-    background-position: 0 4000px; /* travels a large distance */
+    background-position: 0 2000px;
   }
 }
 
-.animate-bgFall {
-  animation: bgFall 0.2s linear infinite; /* 50× faster motion */
+.animate-bgFallSlower {
+  animation: bgFallSlower 25s linear infinite;
 }
 
-/* 💫 Floating Blobs Animations */
+/* Floating accent blobs */
 @keyframes floatSlow {
   0%,
   100% {
@@ -66,12 +67,32 @@ a {
 }
 
 /* ============================= */
-/* ✨ Optional Aesthetic Touches */
+/* ✨ Visual Polish */
 /* ============================= */
 
-/* Subtle glowing pulse effect (can use later if needed) */
+/* Smooth scroll for anchor navigation */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Subtle scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Optional glow effect (for future use) */
 @keyframes glowPulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.2;
   }
   50% {
