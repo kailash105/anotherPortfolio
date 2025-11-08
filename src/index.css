@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================= */
+/* 🌑 Global Styles */
+/* ============================= */
+
+body {
+  @apply bg-[#0d0d0d] text-white antialiased;
+}
+
+img {
+  @apply select-none;
+}
+
+a {
+  @apply transition duration-300;
+}
+
+/* ============================= */
+/* 🎬 Background Animations */
+/* ============================= */
+
+/* ⚡️ Super Fast Falling Dots */
+@keyframes bgFall {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 4000px; /* travels a large distance */
+  }
+}
+
+.animate-bgFall {
+  animation: bgFall 0.2s linear infinite; /* 50× faster motion */
+}
+
+/* 💫 Floating Blobs Animations */
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(25px) translateX(10px);
+  }
+}
+
+@keyframes floatFast {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-30px) translateX(-20px);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 10s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: floatFast 8s ease-in-out infinite;
+}
+
+/* ============================= */
+/* ✨ Optional Aesthetic Touches */
+/* ============================= */
+
+/* Subtle glowing pulse effect (can use later if needed) */
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-glow {
+  animation: glowPulse 3s ease-in-out infinite;
+}
