@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function FeaturedProjects() {
+  const videoRef = useRef(null);
+
+  // 🧠 Ensure autoplay works in browsers that block it
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.play().catch((err) => {
+        console.error("Video autoplay blocked:", err);
+      });
+    }
+  }, []);
+
   const projects = [
     {
       id: 1,
@@ -16,53 +29,56 @@ export default function FeaturedProjects() {
     },
     {
       id: 3,
-      title: "3D Printing Automation",
-      desc: "Cloud-controlled printing workflow system.",
-      bg: "#f04a4a",
-    },
-    {
-      id: 4,
       title: "AI Email Generator",
       desc: "LLM-powered email creation with auto-send.",
       bg: "#24523b",
+    },
+    {
+      id: 4,
+      title: "Law Bot",
+      desc: "AI-powered legal assistant chatbot built for document summarization, question answering, and law research.",
+      img: "/projects/law-bot.jpg",
+      slug: "law-bot",
     },
   ];
 
   return (
     <section
       id="projects"
-      className="relative min-h-screen flex flex-col justify-center py-24 overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center py-24 overflow-hidden bg-transparent"
     >
-      {/* ✅ Background video */}
+      {/* 🎞️ PaperCrush Background */}
       <video
+        ref={videoRef}
         src="/PaperCrush.mp4"
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover brightness-[1.7] contrast-[1.4] saturate-[1.25] z-0"
+        preload="auto"
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        style={{
+          filter: "brightness(1.3) contrast(1.25) saturate(1.15)",
+        }}
+        onLoadedData={() => console.log("✅ PaperCrush video loaded")}
       />
 
-      {/* ✅ Transparent overlay for readability */}
-      <div className="absolute inset-0 bg-white/10 backdrop-blur-[0.5px] z-[1] pointer-events-none"></div>
-
-      {/* ✅ Top fade to help blend with hero section */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-transparent z-[1] pointer-events-none"></div>
-
-      {/* ✅ Content section */}
+      {/* 🧱 Content Section */}
       <div className="relative z-[2] max-w-7xl mx-auto px-6 md:px-12 space-y-10">
+        {/* Heading */}
         <div className="flex items-center justify-between flex-wrap gap-4">
-          <h2 className="text-5xl font-bold text-gray-900">
+          <h2 className="text-5xl font-bold text-gray-900 drop-shadow-lg">
             Featured <span className="text-[#ff6b6b]">Projects</span>
           </h2>
-          <a
-            href="#"
-            className="text-gray-700 hover:text-[#ff6b6b] underline underline-offset-4 transition"
+          <Link
+            to="/projects"
+            className="text-gray-700 hover:text-[#ff6b6b] underline underline-offset-4 transition drop-shadow-md"
           >
             View all projects →
-          </a>
+          </Link>
         </div>
 
+        {/* Project Grid */}
         <div
           className="
             grid grid-cols-1 md:grid-cols-3 gap-6
@@ -72,12 +88,14 @@ export default function FeaturedProjects() {
           {projects.map((proj) => (
             <div
               key={proj.id}
-              className={`relative rounded-3xl overflow-hidden shadow-lg group transition-all duration-300 ${proj.size}`}
+              className="relative rounded-3xl overflow-hidden shadow-xl group transition-all duration-300"
               style={{ backgroundColor: proj.bg }}
             >
-              <div className="absolute inset-0 bg-black/15 group-hover:bg-black/30 transition-all duration-300"></div>
+              {/* Subtle dark overlay */}
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
 
-              <div className="absolute bottom-5 left-5 right-5 text-white">
+              {/* Project Info */}
+              <div className="absolute bottom-5 left-5 right-5 text-white drop-shadow-md">
                 <h3 className="text-2xl font-semibold">{proj.title}</h3>
                 <p className="text-sm text-gray-200">{proj.desc}</p>
               </div>

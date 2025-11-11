@@ -7,10 +7,12 @@
 /* ============================= */
 
 body {
-  @apply bg-[#0d0d0d] text-white antialiased;
+  background-color: transparent !important;
 }
 
-/* Prevent image dragging and smooth transitions globally */
+section#projects {
+  background: transparent !important;
+}
 img {
   @apply select-none;
 }

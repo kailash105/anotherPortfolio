@@ -4,8 +4,11 @@ import FeaturedProjects from "../components/FeaturedProjects";
 
 export default function Home() {
   return (
-    <main className="text-white">
+    <main className="relative min-h-screen text-white bg-transparent overflow-hidden">
+      {/* 🏁 Hero Section */}
       <Hero />
+
+      {/* 🎞️ Featured Projects Section */}
       <FeaturedProjects />
     </main>
   );

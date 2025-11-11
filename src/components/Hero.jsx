@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Github, Linkedin, Mail } from "lucide-react";
 import AnimatedBackground from "./AnimatedBackground";
+import profileImg from "../assets/kailash.jpg";
 
 export default function Hero() {
   return (
@@ -13,9 +15,10 @@ export default function Hero() {
         {/* Left Section - Image */}
         <div className="relative w-72 md:w-[22rem] rounded-3xl overflow-hidden shadow-[0_0_30px_rgba(255,107,107,0.25)] flex-shrink-0">
           <img
-            src="src/assets/kailash.jpg"
+            src={profileImg}
             alt="Kailash Khadarabad"
             className="w-full h-full object-cover rounded-3xl"
+            loading="lazy"
           />
         </div>
 
@@ -51,12 +54,12 @@ export default function Hero() {
               >
                 View My Work
               </a>
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 className="px-5 py-2.5 rounded-full border border-[#ff6b6b] text-[#ff6b6b] font-medium transition-all duration-300"
               >
                 Get In Touch
-              </a>
+              </Link>
             </div>
 
             {/* Social Icons */}
