@@ -73,7 +73,7 @@ export default function ProjectDetails() {
         "Deployed full stack on Render with MongoDB Atlas for data persistence.",
       ],
       repo: "https://github.com/kailash105/law-bot",
-    },
+    },v 
   ];
 
   const project = projects.find((p) => p.slug === slug);
