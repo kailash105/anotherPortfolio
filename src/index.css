@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================= */
+/* 🌎 Global Styles */
+/* ============================= */
+
+body {
+  background-color: transparent !important;
+}
+
+section#projects {
+  background: transparent !important;
+}
+img {
+  @apply select-none;
+}
+
+a {
+  @apply transition duration-300;
+}
+
+/* ============================= */
+/* 🎬 Background Animations (Hero Section) */
+/* ============================= */
+
+/* Slow downward motion for hero dots */
+@keyframes bgFallSlower {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 2000px;
+  }
+}
+
+.animate-bgFallSlower {
+  animation: bgFallSlower 25s linear infinite;
+}
+
+/* Floating accent blobs */
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(25px) translateX(10px);
+  }
+}
+
+@keyframes floatFast {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-30px) translateX(-20px);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 10s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: floatFast 8s ease-in-out infinite;
+}
+
+/* ============================= */
+/* ✨ Visual Polish */
+/* ============================= */
+
+/* Smooth scroll for anchor navigation */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Subtle scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Optional glow effect (for future use) */
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-glow {
+  animation: glowPulse 3s ease-in-out infinite;
+}
