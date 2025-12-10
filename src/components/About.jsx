@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
+import Particles from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { motion } from "framer-motion";
 import {
@@ -201,7 +201,7 @@ export default function About() {
           </motion.a>
         </motion.div>
 
-        {/* RIGHT — IMAGE */}
+        {/* RIGHT — IMAGE ONLY */}
         <motion.div
           initial={{ opacity: 0, x: 80 }}
           whileInView={{ opacity: 1, x: 0 }}

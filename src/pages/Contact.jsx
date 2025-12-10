@@ -3,8 +3,27 @@ import { motion } from "framer-motion";
 
 export default function Contact() {
   return (
-    <section className="min-h-screen bg-[#f8f4ec] text-[#1a1a1a] flex items-center justify-center px-6 py-16 font-serif">
-      <div className="max-w-6xl w-full grid md:grid-cols-2 gap-12 border border-[#c9c2b5] rounded-xl shadow-[0_4px_0_#c9c2b5] bg-[#fbf9f3] p-10 md:p-16 relative">
+    <section className="relative min-h-screen flex items-center justify-center px-6 py-16 font-serif overflow-hidden">
+      {/* === Background Video === */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover opacity-90"
+      >
+        <source src="/videos/ContactBG.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* === Overlay for readability === */}
+      <div className="absolute inset-0 bg-[#f8f4ec]/35 backdrop-blur-[0.5px]" />
+
+
+      {/* === Contact Content === */}
+      <div className="relative z-10 max-w-6xl w-full grid md:grid-cols-2 gap-12 border border-[#c9c2b5] rounded-xl shadow-[0_4px_0_#c9c2b5] bg-[#fbf9f3]/80 backdrop-blur-sm p-10 md:p-16">
+
+        
         {/* Left - Contact Form */}
         <div>
           <motion.h1
@@ -74,14 +93,14 @@ export default function Contact() {
               <p className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#5e4ae3]" /> 
                 <a href="mailto:youremail@gmail.com" className="underline hover:text-[#5e4ae3]">
-                  youremail@gmail.com
+                  kailashkbc2@gmail.com
                 </a>
               </p>
               <p className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-[#5e4ae3]" /> +1 234 567 890
+                <Phone className="w-4 h-4 text-[#5e4ae3]" /> +91 79954 38218
               </p>
               <p className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-[#5e4ae3]" /> Somewhere, Earth 🌍
+                <MapPin className="w-4 h-4 text-[#5e4ae3]" /> Hyderabad, India
               </p>
             </div>
           </div>
@@ -89,24 +108,22 @@ export default function Contact() {
           <div>
             <h3 className="text-lg font-bold font-serif mb-4 text-[#1a1a1a]">Socials</h3>
             <div className="flex space-x-5 text-[#1a1a1a]">
-              <a href="#" className="hover:text-[#5e4ae3] transition">
+              <a href="https://www.linkedin.com/in/kailash-khadarabad-149660156/" className="hover:text-[#5e4ae3] transition">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="#" className="hover:text-[#5e4ae3] transition">
+              <a href="https://github.com/kailash105" className="hover:text-[#5e4ae3] transition">
                 <Github className="w-5 h-5" />
               </a>
-              <a href="#" className="hover:text-[#5e4ae3] transition">
+              <a href="https://www.instagram.com/itskailash89?igsh=NXNmOHYyem1uNzU1&utm_source=qr" className="hover:text-[#5e4ae3] transition">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="hover:text-[#5e4ae3] transition">
-                <Twitter className="w-5 h-5" />
-              </a>
+
             </div>
           </div>
 
           <div className="pt-6 border-t border-[#d4cfc5]">
             <p className="text-xs text-[#666]">
-              Designed with ❤️ by <span className="font-serif font-semibold">Kailu</span> — vintage print ✕ Gen Z energy.
+              Designed BY <span className="font-serif font-semibold">Kailash Khadarabad</span> 
             </p>
           </div>
         </div>
