@@ -210,7 +210,7 @@ export default function About() {
         >
           <div className="relative group">
             <img
-              src="public/KailashKK.png"
+              src="/KailashKK.png"
               alt="Kailash Khadarabad"
               className="relative z-20 w-[430px] h-auto object-contain drop-shadow-[0_15px_45px_rgba(0,0,0,0.35)] group-hover:scale-105 transition-transform duration-500"
             />
