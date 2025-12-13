@@ -109,7 +109,7 @@ export default function Navbar() {
             Contact
           </NavLink>
           <NavLink
-            to="/resume"
+            to="https://docs.google.com/document/d/1w4D0hfszwdzpvnPcLBIDOA_qQcXDJmQAiBcckSn1Tt4/edit?usp=sharing"
             onClick={() => setIsOpen(false)}
             className="block hover:text-accent transition"
           >
