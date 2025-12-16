@@ -6,37 +6,7 @@ const SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbyF92v8IY_xu2HAr3Wve8zNm9x5B61gRhpaUgNY0jmUfd4fsAeoplpFMkCxkusvTQU/exec";
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setSuccess(false);
-
-    try {
-      await fetch(SCRIPT_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      setSuccess(true);
-      setFormData({ name: "", email: "", message: "" });
-    } catch (error) {
-      console.error("Submission error:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [submitted, setSubmitted] = useState(false);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 py-16 font-serif overflow-hidden">
@@ -74,19 +44,30 @@ export default function Contact() {
             Got an idea, project, or collaboration in mind? Drop a message — I’ll get back to you soon.
           </p>
 
-          <form onSubmit={handleSubmit} className="space-y-5 font-mono">
+          {/* 🔒 Hidden iframe to prevent redirect */}
+          <iframe
+            name="hidden_iframe"
+            style={{ display: "none" }}
+            onLoad={() => setSubmitted(true)}
+          />
+
+          {/* ✅ FORM POST (NO CORS, NO REDIRECT) */}
+          <form
+            action={SCRIPT_URL}
+            method="POST"
+            target="hidden_iframe"
+            onSubmit={() => setSubmitted(false)}
+            className="space-y-5 font-mono"
+          >
             <div>
               <label className="block text-xs uppercase tracking-widest text-[#444] mb-1">
                 Name
               </label>
               <input
                 type="text"
+                name="name"
                 placeholder="Your full name"
                 required
-                value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
                 className="w-full border border-[#bfb8aa] bg-transparent py-3 px-4 rounded-md text-sm focus:outline-none focus:border-[#5e4ae3] placeholder:text-[#9c9488]"
               />
             </div>
@@ -97,12 +78,9 @@ export default function Contact() {
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="Your email address"
                 required
-                value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
                 className="w-full border border-[#bfb8aa] bg-transparent py-3 px-4 rounded-md text-sm focus:outline-none focus:border-[#5e4ae3] placeholder:text-[#9c9488]"
               />
             </div>
@@ -112,13 +90,10 @@ export default function Contact() {
                 Message
               </label>
               <textarea
+                name="message"
                 rows="4"
                 placeholder="Tell me about your project..."
                 required
-                value={formData.message}
-                onChange={(e) =>
-                  setFormData({ ...formData, message: e.target.value })
-                }
                 className="w-full border border-[#bfb8aa] bg-transparent py-3 px-4 rounded-md text-sm focus:outline-none focus:border-[#5e4ae3] placeholder:text-[#9c9488]"
               />
             </div>
@@ -126,14 +101,15 @@ export default function Contact() {
             <motion.button
               whileHover={{ scale: 1.05, rotate: -1 }}
               whileTap={{ scale: 0.95, rotate: 0 }}
-              disabled={loading}
-              className="mt-4 bg-[#5e4ae3] text-[#fefefe] px-10 py-3 rounded-full font-bold tracking-wider shadow-[0_3px_0_#2d1fb0] hover:shadow-[0_5px_0_#2d1fb0] transition-all duration-200 uppercase text-sm disabled:opacity-60"
+              type="submit"
+              className="mt-4 bg-[#5e4ae3] text-[#fefefe] px-10 py-3 rounded-full font-bold tracking-wider shadow-[0_3px_0_#2d1fb0] hover:shadow-[0_5px_0_#2d1fb0] transition-all duration-200 uppercase text-sm"
             >
               <Mail className="inline-block mr-2 w-4 h-4" />
-              {loading ? "Sending..." : "Send Message"}
+              Send Message
             </motion.button>
 
-            {success && (
+            {/* ✅ Success Message */}
+            {submitted && (
               <p className="text-green-600 text-sm mt-4">
                 ✨ Message sent successfully. I’ll get back to you soon!
               </p>
