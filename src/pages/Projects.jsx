@@ -1,37 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { projects } from "../data/projects";
 
 export default function Projects() {
-  const projects = [
-    {
-      id: 1,
-      title: "Agro Aura",
-      desc: "AI-powered wheat disease detection using CNN with React frontend.",
-      img: "/projects/agro-aura.jpg",
-      slug: "agro-aura",
-    },
-    {
-      id: 2,
-      title: "Task Manager WebApp",
-      desc: "Beautiful React-based productivity dashboard with animations.",
-      img: "/projects/taskmanager.jpg",
-      slug: "task-manager",
-    },
-    {
-      id: 3,
-      title: "AI Email Generator",
-      desc: "LLM-powered email creation and auto-sending app.",
-      img: "/projects/ai-email.jpg",
-      slug: "ai-email",
-    },
-    {
-      id: 4,
-      title: "Law Bot",
-      desc: "AI-powered legal assistant chatbot built for document summarization, question answering, and law research.",
-      img: "/projects/law-bot.jpg",
-      slug: "law-bot",
-    },
-  ];
 
   return (
     <section className="min-h-screen bg-[#f7f7f7] text-gray-900 py-20 px-6 md:px-12">

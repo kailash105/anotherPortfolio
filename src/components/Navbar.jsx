@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, X } from "lucide-react"; // run: npm install lucide-react
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,68 +16,40 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[#0d0d0d]/70 backdrop-blur-md border-b border-gray-800"
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
+          ? "bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo */}
         <NavLink
           to="/"
-          className="text-xl font-semibold text-white tracking-wide"
+          className="text-xl font-bold text-gray-900 tracking-tight"
         >
-          <span className="text-accent">K</span>ailash
+          Kailash<span className="text-[#ff6b6b]">.</span>
         </NavLink>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8 text-gray-300">
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive
-                ? "text-accent font-medium"
-                : "hover:text-accent transition"
-            }
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/projects"
-            className={({ isActive }) =>
-              isActive
-                ? "text-accent font-medium"
-                : "hover:text-accent transition"
-            }
-          >
-            Projects
-          </NavLink>
-          <NavLink
-            to="/contact"
-            className={({ isActive }) =>
-              isActive
-                ? "text-accent font-medium"
-                : "hover:text-accent transition"
-            }
-          >
-            Contact
-          </NavLink>
-          <NavLink
-            to="/resume"
-            className={({ isActive }) =>
-              isActive
-                ? "text-accent font-medium"
-                : "hover:text-accent transition"
-            }
-          >
-            Resume
-          </NavLink>
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium">
+          {["Home", "Projects", "Resume", "Contact"].map((item) => (
+            <NavLink
+              key={item}
+              to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+              className={({ isActive }) =>
+                isActive
+                  ? "text-[#ff6b6b]"
+                  : "text-gray-600 hover:text-gray-900 transition-colors"
+              }
+            >
+              {item}
+            </NavLink>
+          ))}
         </div>
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden text-white"
+          className="md:hidden text-gray-900"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={26} /> : <Menu size={26} />}
@@ -86,35 +58,20 @@ export default function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {isOpen && (
-        <div className="md:hidden bg-[#0d0d0d]/90 backdrop-blur-md border-t border-gray-800 text-gray-300 px-6 py-4 space-y-4">
-          <NavLink
-            to="/"
-            onClick={() => setIsOpen(false)}
-            className="block hover:text-accent transition"
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/projects"
-            onClick={() => setIsOpen(false)}
-            className="block hover:text-accent transition"
-          >
-            Projects
-          </NavLink>
-          <NavLink
-            to="/contact"
-            onClick={() => setIsOpen(false)}
-            className="block hover:text-accent transition"
-          >
-            Contact
-          </NavLink>
-          <NavLink
-            to="https://docs.google.com/document/d/1w4D0hfszwdzpvnPcLBIDOA_qQcXDJmQAiBcckSn1Tt4/edit?usp=sharing"
-            onClick={() => setIsOpen(false)}
-            className="block hover:text-accent transition"
-          >
-            Resume
-          </NavLink>
+        <div className="md:hidden bg-white border-b border-gray-100 px-6 py-6 space-y-4 shadow-lg absolute w-full top-full left-0">
+          {["Home", "Projects", "Resume", "Contact"].map((item) => (
+            <NavLink
+              key={item}
+              to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+              onClick={() => setIsOpen(false)}
+              className={({ isActive }) =>
+                `block text-lg font-medium ${isActive ? "text-[#ff6b6b]" : "text-gray-600"
+                }`
+              }
+            >
+              {item}
+            </NavLink>
+          ))}
         </div>
       )}
     </nav>
