@@ -186,12 +186,12 @@ export default function About() {
 
           {/* Resume Button */}
           <motion.a
-            href="https://docs.google.com/document/d/1w4D0hfszwdzpvnPcLBIDOA_qQcXDJmQAiBcckSn1Tt4/edit?usp=sharing"
+            href="/KailashCV.pdf"
             download
             whileHover={{ scale: 1.05 }}
             className="inline-block mt-10 bg-[#e62429] text-white px-10 py-3 rounded-md font-semibold shadow-lg hover:shadow-xl hover:bg-[#c01f23] transition-all duration-300 tracking-wide"
           >
-            Download Resume
+            Download CV
           </motion.a>
         </motion.div>
 
