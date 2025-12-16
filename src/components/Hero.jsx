@@ -56,7 +56,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg font-medium text-black-300"
+              className="text-lg font-medium text-black"
             >
               Co-Founder | Full Stack & AI Developer | Cloud Engineer
             </motion.p>
@@ -65,7 +65,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.4 }}
-              className="text-black-400 text-sm md:text-base leading-relaxed"
+              className="text-black text-sm md:text-base leading-relaxed"
             >
               I design and develop{" "}
               <span className="text-cyan-400 font-medium">
