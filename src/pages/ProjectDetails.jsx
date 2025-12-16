@@ -42,13 +42,24 @@ export default function ProjectDetails() {
     <div className="min-h-screen bg-[#fafafa] text-[#333] font-sans selection:bg-[#ff6b6b] selection:text-white">
       {/* 🔹 Hero Section */}
       <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
-        {/* Background Image with Overlay */}
+        {/* Background Image or Video with Overlay */}
         <div className="absolute inset-0 z-0">
-          <img
-            src={project.heroImg}
-            alt={project.title}
-            className="w-full h-full object-cover"
-          />
+          {project.video ? (
+            <video
+              src={project.video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <img
+              src={project.heroImg}
+              alt={project.title}
+              className="w-full h-full object-cover"
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-[#111]/70 to-[#111]/30" />
         </div>
 
