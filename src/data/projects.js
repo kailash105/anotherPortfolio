@@ -453,13 +453,6 @@ cd nextjs-rbac-auth-system
 npm install
 \`\`\`
 
-3️⃣ Configure Environment (.env.local)
-\`\`\`env
-# Add your specific MongoDB connection string
-MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/?retryWrites=true&w=majority
-JWT_SECRET=your-secure-random-string
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-\`\`\`
 
 4️⃣ Start Development Server
 \`\`\`bash
