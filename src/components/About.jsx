@@ -161,7 +161,7 @@ export default function About() {
           {/* Social Icons */}
           <div className="flex items-center gap-6 mt-6">
             <a
-              href="https://linkedin.com/in/yourlinkedin"
+              href="https://www.linkedin.com/in/kailash-khadarabad-149660156/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#111] hover:text-[#e62429] transition-colors"
@@ -169,7 +169,7 @@ export default function About() {
               <FaLinkedin size={22} />
             </a>
             <a
-              href="https://github.com/yourgithub"
+              href="https://github.com/kailash105"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#111] hover:text-[#e62429] transition-colors"
@@ -181,12 +181,6 @@ export default function About() {
               className="text-[#111] hover:text-[#e62429] transition-colors"
             >
               <FaEnvelope size={22} />
-            </a>
-            <a href="#" className="text-[#111] hover:text-[#e62429] transition-colors">
-              <FaXTwitter size={22} />
-            </a>
-            <a href="#" className="text-[#111] hover:text-[#e62429] transition-colors">
-              <FaYoutube size={22} />
             </a>
           </div>
 
