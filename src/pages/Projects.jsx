@@ -24,11 +24,24 @@ export default function Projects() {
             className="group relative rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-white"
           >
             {/* Thumbnail */}
-            <img
-              src={proj.img}
-              alt={proj.title}
-              className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
-            />
+            <div className="w-full h-64 overflow-hidden relative">
+              {proj.video ? (
+                <video
+                  src={proj.video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              ) : (
+                <img
+                  src={proj.img}
+                  alt={proj.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              )}
+            </div>
 
             {/* Content */}
             <div className="p-6 space-y-3">
