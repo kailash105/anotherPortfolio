@@ -1,54 +1,51 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { projects } from "../data/projects";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 
 export default function Projects() {
   return (
-    <section className="min-h-screen bg-[#E52521] text-white py-24 px-6 md:px-12 relative overflow-hidden">
-      {/* 🕷️ Background Elements */}
-      <div className="absolute inset-0 bg-halftone opacity-20 pointer-events-none" />
-
-      {/* Large subtle web pattern in background */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
-        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className="w-[150%] h-[150%] -translate-x-1/4 -translate-y-1/4 stroke-white fill-none">
-          <circle cx="100" cy="100" r="10" strokeWidth="0.5" />
-          <circle cx="100" cy="100" r="30" strokeWidth="0.5" />
-          <circle cx="100" cy="100" r="50" strokeWidth="0.5" />
-          <circle cx="100" cy="100" r="70" strokeWidth="0.5" />
-          <circle cx="100" cy="100" r="90" strokeWidth="0.5" />
-          <line x1="100" y1="0" x2="100" y2="200" strokeWidth="0.5" />
-          <line x1="0" y1="100" x2="200" y2="100" strokeWidth="0.5" />
-          <line x1="30" y1="30" x2="170" y2="170" strokeWidth="0.5" />
-          <line x1="170" y1="30" x2="30" y2="170" strokeWidth="0.5" />
-        </svg>
+    <section className="min-h-screen bg-white text-gray-900 py-32 px-6 md:px-12 relative overflow-hidden font-sans">
+      {/* Mesh Gradients */}
+      <div className="absolute top-0 right-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] right-[-10%] w-[50rem] h-[50rem] bg-cyan-100/50 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[45rem] h-[45rem] bg-violet-100/50 rounded-full blur-[120px]" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        {/* 🏁 Page Title */}
-        <div className="text-center mb-16 px-4">
-          <div className="inline-block relative">
-            <h1 className="text-6xl md:text-8xl font-spidey tracking-wide drop-shadow-[6px_6px_0px_#000] mb-4">
-              MY SUPER <span className="text-[#0032A0]">PROJECTS</span>
-            </h1>
-            <div className="absolute -top-10 -right-10 md:-top-16 md:-right-16 text-4xl md:text-6xl filter drop-shadow-[2px_2px_10px_rgba(255,255,255,0.8)] animate-spidey-sense">
-              🕸️
+        <header className="mb-32">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="flex items-center gap-2 mb-6">
+              <Sparkles className="text-rose-500" size={24} />
+              <span className="text-sm font-bold tracking-[0.3em] text-gray-400 uppercase">Portfolio</span>
             </div>
-          </div>
-          <p className="font-spidey text-xl md:text-2xl text-black drop-shadow-[2px_2px_0px_rgba(255,255,255,0.5)] mt-4">
-            "With great code, comes great responsibility."
-          </p>
-        </div>
+            <h1 className="text-6xl md:text-9xl font-extrabold mb-10 tracking-tighter leading-[0.85]">
+              Project <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-cyan-500 to-rose-500">Showcase.</span>
+            </h1>
+            <p className="text-xl md:text-2xl font-medium text-gray-500 leading-tight max-w-2xl">
+              High-impact solutions engineered with cutting-edge technology and precision.
+            </p>
+          </motion.div>
+        </header>
 
-        {/* 🧩 Project Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-          {projects.map((proj) => (
-            <div
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16">
+          {projects.map((proj, index) => (
+            <motion.div
               key={proj.id}
-              className="group animate-web-swing flex flex-col h-full"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group"
             >
-              <div className="spidey-card bg-white h-full relative group shadow-[12px_12px_0px_0px_#000] hover:shadow-[16px_16px_0px_0px_#0032A0] overflow-hidden">
-                {/* Thumbnail */}
-                <div className="w-full h-64 overflow-hidden relative border-b-4 border-black">
+              <div className="bg-white/40 backdrop-blur-3xl rounded-[2.5rem] border border-gray-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.06)] overflow-hidden transition-all duration-500 hover:shadow-[0_40px_100px_-15px_rgba(139,92,246,0.15)] hover:border-violet-100 h-full flex flex-col">
+                {/* Visual Preview */}
+                <div className="relative aspect-[16/10] overflow-hidden bg-gray-50">
                   {proj.video ? (
                     <video
                       src={proj.video}
@@ -56,61 +53,60 @@ export default function Projects() {
                       loop
                       muted
                       playsInline
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                     />
                   ) : (
                     <img
                       src={proj.img}
                       alt={proj.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                     />
                   )}
-                  {/* Subtle Web Overlay on Hover */}
-                  <div className="absolute inset-0 bg-[#0032A0]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  <div className="absolute inset-0 bg-violet-600/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
 
-                {/* Content */}
-                <div className="p-8 flex flex-col grow">
-                  <h3 className="text-3xl font-spidey text-black mb-3">
+                {/* Info */}
+                <div className="p-10 md:p-14 flex flex-col grow">
+                  <div className="flex items-center gap-3 mb-6">
+                    <span className="w-10 h-[1px] bg-gray-200" />
+                    <span className="text-[10px] font-bold tracking-[0.3em] text-gray-400 uppercase">
+                      PROJECT {index + 1}
+                    </span>
+                  </div>
+                  <h3 className="text-3xl md:text-4xl font-extrabold mb-6 tracking-tight group-hover:text-violet-600 transition-colors">
                     {proj.title}
                   </h3>
-                  <p className="text-gray-700 font-bold font-mono text-sm leading-relaxed mb-8 grow">
+                  <p className="text-lg font-medium text-gray-500 leading-relaxed mb-10 line-clamp-3">
                     {proj.desc}
                   </p>
 
                   <Link
                     to={`/projects/${proj.slug}`}
-                    className="inline-block text-center bg-[#E52521] text-white font-spidey text-lg py-3 px-6 border-4 border-black shadow-[4px_4px_0px_0px_#000] hover:shadow-[2px_2px_0px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                    className="mt-auto inline-flex items-center gap-3 text-sm font-bold tracking-widest text-violet-600 uppercase hover:text-black transition-colors"
                   >
-                    SELECT INTEL →
+                    View Details <ArrowUpRight size={20} />
                   </Link>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        {/* 🚀 Link to Freelancing Page */}
-        <div className="mt-32 text-center pb-20">
+        {/* Professional Navigation to Freelancing */}
+        <div className="mt-48 text-center bg-gray-50/50 backdrop-blur-sm rounded-[3rem] py-24 border border-gray-100">
           <Link
             to="/freelancing"
-            className="group relative inline-flex items-center"
+            className="inline-flex flex-col items-center group"
           >
-            {/* Pulsing "THWIP!" Text */}
-            <span className="absolute -left-16 md:-left-24 text-2xl md:text-3xl font-spidey text-black opacity-0 group-hover:opacity-100 -rotate-12 transition-all duration-300 group-hover:-translate-x-4">
-              THWIP!
+            <span className="text-xs font-bold tracking-[0.4em] text-violet-400 mb-6 group-hover:text-rose-500 transition-colors uppercase">
+              Professional Experience
             </span>
-
-            <div className="bg-white border-4 border-black px-10 py-5 shadow-[10px_10px_0px_0px_#0032A0] group-hover:shadow-[12px_12px_0px_0px_#000] transition-all overflow-hidden relative">
-              <span className="relative z-10 text-2xl md:text-4xl font-spidey text-black group-hover:text-[#E52521] transition-colors">
-                EXPLORE <span className="text-[#0032A0]">FREELANCERS HUB</span> →
-              </span>
-              <div className="absolute inset-0 bg-halftone opacity-0 group-hover:opacity-10 transition-opacity" />
+            <span className="text-4xl md:text-7xl font-extrabold tracking-tighter leading-none group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-violet-600 group-hover:to-cyan-500 transition-all duration-300">
+              Freelance Works
+            </span>
+            <div className="mt-8 p-4 rounded-full border border-gray-200 group-hover:border-violet-300 group-hover:bg-white transition-all">
+              <ArrowUpRight size={32} className="text-gray-300 group-hover:text-violet-600" />
             </div>
-
-            <span className="absolute -right-16 md:-right-24 text-2xl md:text-3xl font-spidey text-black opacity-0 group-hover:opacity-100 rotate-12 transition-all duration-300 group-hover:translate-x-4">
-              THWIP!
-            </span>
           </Link>
         </div>
       </div>
