@@ -13,6 +13,7 @@ body {
 section#projects {
   background: transparent !important;
 }
+
 img {
   @apply select-none;
 }
@@ -30,6 +31,7 @@ a {
   0% {
     background-position: 0 0;
   }
+
   100% {
     background-position: 0 2000px;
   }
@@ -41,20 +43,24 @@ a {
 
 /* Floating accent blobs */
 @keyframes floatSlow {
+
   0%,
   100% {
     transform: translateY(0) translateX(0);
   }
+
   50% {
     transform: translateY(25px) translateX(10px);
   }
 }
 
 @keyframes floatFast {
+
   0%,
   100% {
     transform: translateY(0) translateX(0);
   }
+
   50% {
     transform: translateY(-30px) translateX(-20px);
   }
@@ -93,10 +99,12 @@ html {
 
 /* Optional glow effect (for future use) */
 @keyframes glowPulse {
+
   0%,
   100% {
     opacity: 0.2;
   }
+
   50% {
     opacity: 0.5;
   }
@@ -104,4 +112,139 @@ html {
 
 .animate-glow {
   animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* ============================= */
+/* 🍄 Super Mario Theme Animations */
+/* ============================= */
+
+.font-mario {
+  font-family: 'Press Start 2P', cursive;
+}
+
+@keyframes coin-pop {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateY(-50px) scale(1.5);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-80px) scale(1);
+    opacity: 0;
+  }
+}
+
+.animate-coin-pop {
+  animation: coin-pop 0.6s ease-out forwards;
+}
+
+@keyframes brick-bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-brick-bounce {
+  animation: brick-bounce 0.2s ease-in-out;
+}
+
+.mario-block-shadow {
+  box-shadow:
+    -4px 0 0 0 #000,
+    4px 0 0 0 #000,
+    0 -4px 0 0 #000,
+    0 4px 0 0 #000,
+    inset -4px -4px 0 0 #b07000;
+}
+
+.mario-border-pixel {
+  box-shadow:
+    -4px 0 0 0 #000,
+    4px 0 0 0 #000,
+    0 -4px 0 0 #000,
+    0 4px 0 0 #000;
+}
+
+/* ============================= */
+/* 🕷️ Spider-Man Theme Styles */
+/* ============================= */
+
+.font-spidey {
+  font-family: 'Bangers', cursive;
+}
+
+@keyframes spidey-sense {
+
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px #E52521);
+  }
+
+  50% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 15px #E52521);
+  }
+}
+
+.animate-spidey-sense {
+  animation: spidey-sense 1.5s ease-in-out infinite;
+}
+
+@keyframes web-swing {
+  0% {
+    transform: rotate(-3deg);
+  }
+
+  50% {
+    transform: rotate(3deg);
+  }
+
+  100% {
+    transform: rotate(-3deg);
+  }
+}
+
+.animate-web-swing {
+  animation: web-swing 4s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.bg-halftone {
+  background-image: radial-gradient(#000 10%, transparent 11%);
+  background-size: 10px 10px;
+  background-position: 0 0, 5px 5px;
+  opacity: 0.1;
+}
+
+.spidey-card {
+  border: 4px solid #000;
+  box-shadow: 8px 8px 0px 0px #000;
+  transition: all 0.2s ease-in-out;
+}
+
+.spidey-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0px 0px #E52521;
+}
+
+.web-line {
+  background: linear-gradient(90deg, transparent, #fff 50%, transparent);
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: rotate(-15deg);
+  opacity: 0.3;
 }

@@ -6,6 +6,7 @@ import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import Resume from "./pages/Resume";
 import ProjectDetails from "./pages/ProjectDetails";
+import Freelancing from "./pages/Freelancing";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/projects/:slug" element={<ProjectDetails />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/resume" element={<Resume />} />
+        <Route path="/freelancing" element={<Freelancing />} />
       </Routes>
     </>
   );
