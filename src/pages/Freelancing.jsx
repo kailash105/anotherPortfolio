@@ -17,7 +17,7 @@ const freelanceProjects = [
     },
     {
         id: 2,
-        title: "Innovation Hub",
+        title: "TechProjectsHub",
         type: "Web Application",
         desc: "A modern collaborative platform designed for engineers to document workflows, share technical insights, and manage complex projects efficiently.",
         icon: <Zap className="text-cyan-500" size={36} />,
