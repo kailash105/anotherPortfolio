@@ -6,6 +6,8 @@ import {
   FaGithub,
   FaLinkedin,
   FaEnvelope,
+  FaArrowRight,
+  FaRocket
 } from "react-icons/fa6";
 
 export default function About() {
@@ -13,154 +15,168 @@ export default function About() {
     await loadSlim(engine);
   }, []);
 
+  const roles = ["AI Engineer", "Frontend Dev", "Cloud Architect"];
+
   return (
-    <section className="relative overflow-hidden bg-[#f8f9fa] text-[#111] font-sans">
-      {/* === RED DIAGONAL BACKGROUND === */}
-      <div className="absolute top-0 right-[-25%] w-[55vw] h-full transform -skew-x-[22deg] origin-top-right overflow-hidden shadow-2xl">
-        <div className="absolute inset-0 bg-[#e62429]" />
-        <div className="absolute left-0 top-0 h-full w-[35%] bg-gradient-to-l from-[#e62429] via-[#e62429]/70 to-transparent" />
-
-        {/* === PARTICLES === */}
-        <Particles
-          id="tsparticles"
-          init={particlesInit}
-          options={{
-            fullScreen: { enable: false },
-            background: { color: { value: "transparent" } },
-            fpsLimit: 60,
-            interactivity: {
-              events: { onHover: { enable: true, mode: "grab" }, resize: true },
-              modes: { grab: { distance: 180, links: { opacity: 0.35 } } },
-            },
-            particles: {
-              number: { value: 60, density: { enable: true, area: 800 } },
-              color: { value: "#ffffff" },
-              links: {
-                enable: true,
-                color: "#ffffff",
-                distance: 130,
-                opacity: 0.25,
-                width: 1,
-              },
-              move: { enable: true, speed: 1.6 },
-              opacity: { value: 0.3 },
-              size: { value: 1.4 },
-            },
-          }}
-          className="absolute inset-0 z-10"
-        />
+    <section id="about" className="relative w-full overflow-hidden bg-white py-16 sm:py-24 lg:py-32 font-sans selection:bg-[#e62429] selection:text-white">
+      {/* --- BACKGROUND EFFECTS --- */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[-10%] right-[-5%] w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-red-50 rounded-full blur-3xl opacity-60" />
+        <div className="absolute bottom-[-10%] left-[-5%] w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-gray-50 rounded-full blur-3xl opacity-80" />
       </div>
 
-      {/* === MAIN CONTENT === */}
-      <div className="relative z-20 container mx-auto px-6 lg:px-20 py-28 grid grid-cols-1 md:grid-cols-2 items-center gap-20">
+      <Particles
+        id="about-particles"
+        init={particlesInit}
+        options={{
+          fullScreen: { enable: false },
+          background: { color: { value: "transparent" } },
+          fpsLimit: 60,
+          particles: {
+            number: { value: 20, density: { enable: true, area: 800 } },
+            color: { value: ["#e62429", "#cbd5e1"] },
+            shape: { type: "circle" },
+            opacity: { value: 0.3 },
+            size: { value: 3, random: true },
+            move: { enable: true, speed: 0.8, direction: "none", random: true, straight: false, outModes: "out" },
+          },
+        }}
+        className="absolute inset-0 z-0 pointer-events-none"
+      />
 
-        {/* === LEFT CONTENT === */}
-        <motion.div
-          initial={{ opacity: 0, x: -80 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="space-y-7 order-2 md:order-1"
-        >
-          {/* Breadcrumb */}
-          <motion.p
-            className="text-base text-gray-500 tracking-wide"
-            initial={{ opacity: 0, y: 10 }}
+      {/* --- CONTAINER --- */}
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        
+        {/* Mobile Section Title (Visible only on small screens) */}
+        <div className="lg:hidden flex items-center gap-3 mb-10">
+          <div className="h-[2px] w-8 bg-[#e62429]"></div>
+          <span className="text-[#e62429] font-bold uppercase tracking-widest text-sm">About Me</span>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          {/* --- LEFT / TOP: IMAGE --- */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="lg:col-span-5 flex justify-center relative w-full mt-4 lg:mt-0"
           >
-            <span className="text-[#111] font-medium">Home</span>
-            <span className="mx-1 text-gray-400">/</span>
-            <span className="text-[#111] font-medium">About</span>
-            <span className="mx-1 text-gray-400">/</span>
-            <span className="font-semibold text-[#111]">
-              AI Engineer <span className="text-gray-400">|</span> Frontend Dev{" "}
-              <span className="text-gray-400">|</span> Cloud Architect
-            </span>
-          </motion.p>
+            <div className="relative w-full max-w-[280px] sm:max-w-[360px] xl:max-w-[420px]">
+              {/* Decorative background curve */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[115%] bg-gradient-to-b from-[#e62429]/5 to-gray-100/50 rounded-t-full rounded-b-[40px] -z-10 shadow-sm border border-white/50 backdrop-blur-sm" />
+              
+              <img
+                src="/KailashKK.png"
+                alt="Kailash Khadarabad"
+                className="w-full h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500 z-10 relative saturate-[1.1]"
+              />
 
-          {/* Name */}
-          <motion.h2
-            className="text-5xl md:text-6xl font-extrabold text-[#e62429] uppercase tracking-tight"
-            initial={{ opacity: 0, y: 15 }}
+              {/* Floating Badge */}
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+                className="absolute bottom-4 sm:bottom-8 -left-4 sm:-left-10 bg-white/90 backdrop-blur-md p-3 sm:p-4 rounded-2xl shadow-2xl border border-gray-100/50 z-20 flex items-center gap-3 sm:gap-4 pointer-events-none"
+              >
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-tr from-[#e62429] to-red-400 rounded-full flex flex-shrink-0 items-center justify-center text-white shadow-inner">
+                  <FaRocket size={18} />
+                </div>
+                <div>
+                  <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-bold tracking-wider leading-tight">Co-Founder</p>
+                  <p className="text-xs sm:text-sm font-extrabold text-zinc-900 leading-tight">TechProjectsHub</p>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* --- RIGHT / BOTTOM: CONTENT --- */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            className="lg:col-span-7 flex flex-col justify-center space-y-6 sm:space-y-8"
           >
-            Kailash Khadarabad
-          </motion.h2>
+            {/* Desktop Section Title */}
+            <div className="hidden lg:flex items-center gap-4">
+              <div className="h-[2px] w-12 bg-[#e62429]"></div>
+              <span className="text-[#e62429] font-bold uppercase tracking-widest text-sm">About Me</span>
+            </div>
 
-          {/* Description */}
-          <p className="text-gray-700 leading-relaxed max-w-md">
-            He is an <strong>AI Engineer</strong> and <strong>Co-Founder</strong>{" "}
-            passionate about crafting systems that blend{" "}
-            <strong>artificial intelligence</strong> with{" "}
-            <strong>modern web technologies</strong>. His focus lies in building{" "}
-            <span className="font-semibold text-[#111]">
-              scalable, interactive, and intelligent
-            </span>{" "}
-            solutions that redefine digital experiences.
-          </p>
+            <div className="space-y-4">
+              <h2 className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-extrabold text-zinc-900 tracking-tight leading-[1.15]">
+                Transforming ideas into <br className="hidden xl:block"/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e62429] to-red-500">
+                  Intelligent Systems.
+                </span>
+              </h2>
+              
+              {/* Role Chips */}
+              <div className="flex flex-wrap gap-2 sm:gap-3 pt-2">
+                {roles.map((role, idx) => (
+                  <span 
+                    key={idx} 
+                    className="px-4 py-2 bg-white text-zinc-700 text-xs sm:text-sm font-semibold rounded-full border border-zinc-200 shadow-sm transition-colors hover:border-[#e62429] hover:bg-red-50 cursor-pointer"
+                  >
+                    {role}
+                  </span>
+                ))}
+              </div>
+            </div>
 
-          <p className="text-gray-600 text-sm leading-relaxed max-w-md">
-            Currently leading <strong>TechProjectsHub</strong>, empowering
-            students and startups through AI-driven automation, cloud
-            innovation, and next-generation digital tools.
-          </p>
+            {/* Typography for Readability on Mobile & Desktop */}
+            <div className="space-y-5 text-gray-600 text-base sm:text-lg leading-relaxed max-w-2xl">
+              <p>
+                I am an <strong className="text-zinc-900 font-semibold">AI Engineer</strong> and <strong className="text-zinc-900 font-semibold">Co-Founder</strong> passionate about crafting systems that blend artificial intelligence with modern web technologies. My focus lies in building <span className="text-[#e62429] font-medium">scalable, interactive, and intelligent</span> solutions that redefine digital experiences.
+              </p>
+              <p>
+                Currently leading <strong className="text-zinc-900 font-semibold">TechProjectsHub</strong>, empowering students and startups through AI-driven automation, cloud innovation, and next-generation digital tools.
+              </p>
+            </div>
 
-          {/* Social Icons */}
-          <div className="flex items-center gap-6 mt-6">
-            <a
-              href="https://www.linkedin.com/in/kailash-khadarabad-149660156/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#111] hover:text-[#e62429] transition"
-            >
-              <FaLinkedin size={22} />
-            </a>
-            <a
-              href="https://github.com/kailash105"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#111] hover:text-[#e62429] transition"
-            >
-              <FaGithub size={22} />
-            </a>
-            <a
-              href="mailto:kailashkbc2@gmail.com"
-              className="text-[#111] hover:text-[#e62429] transition"
-            >
-              <FaEnvelope size={22} />
-            </a>
-          </div>
+            {/* Actions & Social Links */}
+            <div className="flex flex-col sm:flex-row items-center sm:items-start lg:items-center gap-6 pt-4 z-20 relative">
+              <a
+                href="https://docs.google.com/document/d/1w4D0hfszwdzpvnPcLBIDOA_qQcXDJmQAiBcckSn1Tt4/edit?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-flex items-center gap-3 bg-[#e62429] text-white px-8 py-4 rounded-xl font-semibold shadow-lg shadow-red-500/30 hover:shadow-red-500/50 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden w-full sm:w-auto justify-center"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  View Resume <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                </span>
+                <div className="absolute inset-0 h-full w-0 bg-white/20 group-hover:w-full transition-[width] duration-300 ease-out z-0"></div>
+              </a>
 
-          {/* CV Button */}
-          <motion.a
-            href="https://docs.google.com/document/d/1w4D0hfszwdzpvnPcLBIDOA_qQcXDJmQAiBcckSn1Tt4/edit?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block mt-10 bg-[#e62429] text-white px-10 py-3 rounded-md font-semibold shadow-lg hover:shadow-xl hover:bg-[#c01f23] transition-all duration-300 tracking-wide"
-          >
-            View CV
-          </motion.a>
+              <div className="flex items-center gap-4 sm:gap-5 w-full sm:w-auto justify-center">
+                {[
+                  { icon: FaLinkedin, link: "https://www.linkedin.com/in/kailash-khadarabad-149660156/", label: "LinkedIn" },
+                  { icon: FaGithub, link: "https://github.com/kailash105", label: "GitHub" },
+                  { icon: FaEnvelope, link: "mailto:kailashkbc2@gmail.com", label: "Email" }
+                ].map((social, index) => {
+                  const Icon = social.icon;
+                  return (
+                    <a
+                      key={index}
+                      href={social.link}
+                      aria-label={social.label}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 sm:w-14 sm:h-14 flex flex-shrink-0 items-center justify-center rounded-2xl bg-white text-zinc-600 border border-zinc-100 hover:bg-[#e62429] hover:text-white hover:border-[#e62429] transition-all duration-300 hover:scale-105 hover:-translate-y-1 shadow-sm hover:shadow-md"
+                    >
+                      <Icon size={20} className="sm:w-6 sm:h-6" />
+                    </a>
+                  )
+                })}
+              </div>
+            </div>
 
-        </motion.div>
-
-        {/* === RIGHT IMAGE === */}
-        <motion.div
-          initial={{ opacity: 0, x: 80 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="relative flex justify-center md:justify-end order-1 md:order-2 z-30"
-        >
-          <img
-            src="/KailashKK.png"
-            alt="Kailash Khadarabad"
-            className="w-[430px] h-auto object-contain drop-shadow-[0_15px_45px_rgba(0,0,0,0.35)] hover:scale-105 transition-transform duration-500"
-          />
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
-
-      {/* Background Text */}
-      <h1 className="absolute top-28 left-0 w-full text-[8.5rem] md:text-[10.5rem] font-extrabold text-[#e62429]/10 uppercase text-center tracking-[0.25em] select-none">
-        ABOUT
-      </h1>
     </section>
   );
 }
