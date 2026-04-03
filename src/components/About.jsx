@@ -85,8 +85,8 @@ export default function About() {
                   <FaRocket size={18} />
                 </div>
                 <div>
-                  <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-bold tracking-wider leading-tight">Co-Founder</p>
-                  <p className="text-xs sm:text-sm font-extrabold text-zinc-900 leading-tight">TechProjectsHub</p>
+                  <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-bold tracking-wider leading-tight">Professional</p>
+                  <p className="text-xs sm:text-sm font-extrabold text-zinc-900 leading-tight">Freelancer</p>
                 </div>
               </motion.div>
             </div>
@@ -130,10 +130,10 @@ export default function About() {
             {/* Typography for Readability on Mobile & Desktop */}
             <div className="space-y-5 text-gray-600 text-base sm:text-lg leading-relaxed max-w-2xl">
               <p>
-                I am an <strong className="text-zinc-900 font-semibold">AI Engineer</strong> and <strong className="text-zinc-900 font-semibold">Co-Founder</strong> passionate about crafting systems that blend artificial intelligence with modern web technologies. My focus lies in building <span className="text-[#e62429] font-medium">scalable, interactive, and intelligent</span> solutions that redefine digital experiences.
+                I am an <strong className="text-zinc-900 font-semibold">AI Engineer</strong> and <strong className="text-zinc-900 font-semibold">Professional Freelancer</strong> passionate about crafting systems that blend artificial intelligence with modern web technologies. My focus lies in building <span className="text-[#e62429] font-medium">scalable, interactive, and intelligent</span> solutions that redefine digital experiences.
               </p>
               <p>
-                Currently leading <strong className="text-zinc-900 font-semibold">TechProjectsHub</strong>, empowering students and startups through AI-driven automation, cloud innovation, and next-generation digital tools.
+                Currently empowering independent clients and startups through <strong className="text-zinc-900 font-semibold">AI-driven automation</strong>, cloud innovation, and next-generation digital tools as a freelance specialist.
               </p>
             </div>
 
